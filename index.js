@@ -140,10 +140,6 @@ app.get('/callback', (req, res)=>{
     });
 });
 
-app.listen(port, () => {
-    console.log(`Server listening at http://localhost:${port}`);
-});
-
 app.get('/logout', (req, res) => {
   const sessionId = req.query?.session;
 
@@ -163,7 +159,7 @@ app.get('/logout', (req, res) => {
   }
 });
 
-app.get('generate', (req, res) => {
+app.get('/generate', (req, res) => {
     const sessionid = req.query.session;
 
     if(!sessionid || !sessions[session]){
