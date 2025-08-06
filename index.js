@@ -1,4 +1,7 @@
-const baseURL = process.env.BASE_URL;
+const baseURL = process.env.BASE_URL || `http://localhost:${port}`;
+
+const generateLink = `${baseURL}/generate?session=${session}`;
+
 
 const express = require('express');
 const request = require('request');
@@ -108,20 +111,21 @@ app.get('/callback', (req, res)=>{
 
             if(user1 && user2){
                 //both logged in
-                const generateLink = `${process.env.BASE_URL}/generate?session=${session}`;
                 
                 res.send(`
                     <h1>Both users logged in!</h1>
                     <p>Session: ${session}</p>
                     <p>Now you can fetch data and generate the playlist.</p>
-                    <p><a href="${generateLink}">See Shared Top Tracks</a></p>
                     <a href="/logout?session=${session}">Logout and clear session</a>
                 `);
+
+                res.redirect(`/generate?session=${session}`);
+
             }
             else{
                 // Only one user logged in so far — send the share link to friend
                 const nextUser = user === '1' ? '2' : '1';
-                const shareLink = `${process.env.BASE_URL}/login?session=${session}&user=${nextUser}`;
+                const shareLink = `${baseURL}/login?session=${session}&user=${nextUser}`;
 
 
                 res.send(`
