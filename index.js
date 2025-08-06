@@ -108,11 +108,13 @@ app.get('/callback', (req, res)=>{
 
             if(user1 && user2){
                 //both logged in
+                const generateLink = `${process.env.BASE_URL}/generate?session=${session}`;
+                
                 res.send(`
                     <h1>Both users logged in!</h1>
                     <p>Session: ${session}</p>
                     <p>Now you can fetch data and generate the playlist.</p>
-                    <p><a href="/generate?session=${session}">See Shared Top Tracks</a></p>
+                    <p><a href="${generateLink}">See Shared Top Tracks</a></p>
                     <a href="/logout?session=${session}">Logout and clear session</a>
                 `);
             }
