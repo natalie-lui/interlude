@@ -1,7 +1,5 @@
 const baseURL = process.env.BASE_URL || `http://localhost:${port}`;
 
-const generateLink = `${baseURL}/generate?session=${session}`;
-
 
 const express = require('express');
 const request = require('request');
