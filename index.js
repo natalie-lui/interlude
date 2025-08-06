@@ -1,4 +1,4 @@
-const baseURL = process.env.BASE_URL || `http://localhost:${port}`;
+const baseURL = process.env.BASE_URL;
 
 const express = require('express');
 const request = require('request');
@@ -118,8 +118,8 @@ app.get('/callback', (req, res)=>{
             else{
                 // Only one user logged in so far — send the share link to friend
                 const nextUser = user === '1' ? '2' : '1';
-                const baseURL = process.env.BASE_URL || `http://localhost:${port}`;
-                const shareLink = `${baseURL}/login?session=${session}&user=${nextUser}`;
+                const shareLink = `${process.env.BASE_URL}/login?session=${session}&user=${nextUser}`;
+
 
                 res.send(`
                     <h1>User ${user} logged in!</h1>
