@@ -113,6 +113,7 @@ app.get('/callback', (req, res)=>{
                     <p>Session: ${session}</p>
                     <p>Now you can fetch data and generate the playlist.</p>
                     <a href="/logout?session=${session}">Logout and clear session</a>
+                    <a href="/generate?session=${session}">Get your top tracks!</a>
                 `);
             }
             else{
