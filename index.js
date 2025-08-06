@@ -1,11 +1,13 @@
-require('dotenv').config();
+const baseURL = process.env.BASE_URL || `http://localhost:${port}`;
 
 const express = require('express');
 const request = require('request');
 const querystring = require('querystring');
 
 const app = express();
-const port = 3000; //const int port num = 3000
+//const port = 3000;
+const port = process.env.PORT || 3000;
+
 const scopes = [
     'user-top-read',
     'user-read-recently-played',
@@ -116,7 +118,8 @@ app.get('/callback', (req, res)=>{
             else{
                 // Only one user logged in so far — send the share link to friend
                 const nextUser = user === '1' ? '2' : '1';
-                const shareLink = `http://localhost:${port}/login?session=${session}&user=${nextUser}`;
+                const baseURL = process.env.BASE_URL || `http://localhost:${port}`;
+                const shareLink = `${baseURL}/login?session=${session}&user=${nextUser}`;
 
                 res.send(`
                     <h1>User ${user} logged in!</h1>
