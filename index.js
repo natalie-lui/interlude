@@ -112,8 +112,8 @@ app.get('/callback', (req, res)=>{
                     <h1>Both users logged in!</h1>
                     <p>Session: ${session}</p>
                     <p>Now you can fetch data and generate the playlist.</p>
+                    <p><a href="/generate?session=${session}">See Shared Top Tracks</a></p>
                     <a href="/logout?session=${session}">Logout and clear session</a>
-                    <a href="/generate?session=${session}">Get your top tracks!</a>
                 `);
             }
             else{
