@@ -1,13 +1,10 @@
-const baseURL = process.env.BASE_URL || `http://localhost:${port}`;
-
-
 const express = require('express');
 const request = require('request');
 const querystring = require('querystring');
 
 const app = express();
-//const port = 3000;
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
+const baseURL = process.env.BASE_URL;
 
 const scopes = [
     'user-top-read',
@@ -110,15 +107,14 @@ app.get('/callback', (req, res)=>{
             if(user1 && user2){
                 //both logged in
                 
-                res.send(`
-                    <h1>Both users logged in!</h1>
-                    <p>Session: ${session}</p>
-                    <p>Now you can fetch data and generate the playlist.</p>
-                    <a href="/logout?session=${session}">Logout and clear session</a>
-                `);
+                //res.send(`
+                  //  <h1>Both users logged in!</h1>
+                    //<p>Session: ${session}</p>
+                    //<p>Now you can fetch data and generate the playlist.</p>
+                    //<a href="/logout?session=${session}">Logout and clear session</a>
+                //`);
 
                 res.redirect(`/generate?session=${session}`);
-
             }
             else{
                 // Only one user logged in so far — send the share link to friend
