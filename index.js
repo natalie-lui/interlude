@@ -109,12 +109,12 @@ app.get('/callback', (req, res)=>{
             if(user1 && user2){
                 //both logged in
                 
-                //res.send(`
-                  //  <h1>Both users logged in!</h1>
-                    //<p>Session: ${session}</p>
-                    //<p>Now you can fetch data and generate the playlist.</p>
-                    //<a href="/logout?session=${session}">Logout and clear session</a>
-                //`);
+                /*res.send(`
+                    <h1>Both users logged in!</h1>
+                    <p>Session: ${session}</p>
+                    <p>Now you can fetch data and generate the playlist.</p>
+                    <a href="/logout?session=${session}">Logout and clear session</a>
+                `);*/
 
                 res.redirect(`/generate?session=${session}`);
             }
